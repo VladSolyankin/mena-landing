@@ -441,6 +441,7 @@ const gridRows: GridRow[] = [
   position: relative;
   width: 100%;
   background: white;
+  padding-bottom: 80px;
 
   &__header {
     text-align: center;
@@ -448,7 +449,7 @@ const gridRows: GridRow[] = [
   }
 
   &__subtitle {
-    font-family: "Avenir Next", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-size: 32px;
     line-height: 1.4;
@@ -497,7 +498,7 @@ const gridRows: GridRow[] = [
     position: absolute;
     left: 40px;
     top: 40px;
-    font-family: "Avenir Next", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 36px;
     line-height: 1.1;
@@ -525,7 +526,7 @@ const gridRows: GridRow[] = [
   }
 
   &__feature-item {
-    font-family: "Avenir Next", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-size: 24px;
     line-height: 1.4;
@@ -542,7 +543,7 @@ const gridRows: GridRow[] = [
     font-size: 24px;
     line-height: 1.4;
     margin: 0;
-    font-family: "Avenir Next", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 400;
     z-index: 3;
 
@@ -702,7 +703,7 @@ const gridRows: GridRow[] = [
     background: #a76508;
     border-radius: 16px;
     border: none;
-    font-family: "Avenir Next", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-size: 20px;
     line-height: 1.2;
@@ -758,7 +759,7 @@ const gridRows: GridRow[] = [
   .products-grid__subtitle {
     color: #a76508;
     text-align: center;
-    font-family: "Avenir Next";
+    font-family: "Montserrat", sans-serif;
     font-size: 32px;
     font-style: normal;
     font-weight: 400;

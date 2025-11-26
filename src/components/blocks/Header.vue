@@ -72,7 +72,7 @@ import Logo from "../../assets/svg/logo.vue";
       >
         <!-- Sample Button Text -->
         <span
-          class="w-[167px] right-4 font-['Avenir_Next'] font-medium text-lg leading-[120%] text-center tracking-[0.2em] uppercase text-white"
+          class="w-[167px] right-4 font-['Montserrat'] font-medium text-lg leading-[120%] text-center tracking-[0.2em] uppercase text-white"
         >
           ORDER A CALL
         </span>
@@ -88,7 +88,7 @@ import Logo from "../../assets/svg/logo.vue";
         class="absolute w-[133px] h-[40px] right-0 top-1/2 -translate-y-1/2 bg-[#A76508] rounded-lg invisible"
       >
         <span
-          class="absolute w-[97px] h-[20px] left-1/2 -translate-x-1/2 top-[10px] font-['Avenir_Next'] font-normal text-lg leading-[110%] text-center text-white"
+          class="absolute w-[97px] h-[20px] left-1/2 -translate-x-1/2 top-[10px] font-['Montserrat'] font-normal text-lg leading-[110%] text-center text-white"
         >
           Product name
         </span>

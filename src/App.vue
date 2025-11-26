@@ -2,6 +2,8 @@
 import Header from "./components/blocks/Header.vue";
 import HeroSection from "./components/blocks/HeroSection.vue";
 import ProductsGrid from "./components/blocks/ProductsGrid.vue";
+import StoneTypes from "./components/blocks/StoneTypes.vue";
+import ProductionSites from "./components/blocks/ProductionSites.vue";
 </script>
 
 <template>
@@ -16,6 +18,10 @@ import ProductsGrid from "./components/blocks/ProductsGrid.vue";
     <div class="mx-auto w-full">
       <ProductsGrid class="pt-[80px]" />
     </div>
+
+    <StoneTypes />
+
+    <ProductionSites />
   </div>
 </template>
 

@@ -332,7 +332,7 @@ const sections: StoneSection[] = [
   },
   {
     id: "precious",
-    title: "Precious stone",
+    title: "Semiprecious stone",
     showLoadMore: true,
     cards: [
       {

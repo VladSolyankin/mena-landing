@@ -4,6 +4,13 @@ import HeroSection from "./components/blocks/HeroSection.vue";
 import ProductsGrid from "./components/blocks/ProductsGrid.vue";
 import StoneTypes from "./components/blocks/StoneTypes.vue";
 import ProductionSites from "./components/blocks/ProductionSites.vue";
+import Portfolio from "./components/blocks/Portfolio.vue";
+import Roadmap from "./components/blocks/Roadmap.vue";
+import ContactUs from "./components/blocks/ContactUs.vue";
+import Benefits from "./components/blocks/Benefits.vue";
+import Service from "./components/blocks/Service.vue";
+import Calculate from "./components/blocks/Calculate.vue";
+import Footer from "./components/blocks/Footer.vue";
 </script>
 
 <template>
@@ -22,6 +29,20 @@ import ProductionSites from "./components/blocks/ProductionSites.vue";
     <StoneTypes />
 
     <ProductionSites />
+
+    <Portfolio />
+
+    <Roadmap />
+
+    <ContactUs />
+
+    <Benefits />
+
+    <Service />
+
+    <Calculate />
+
+    <Footer class="mx-auto" />
   </div>
 </template>
 

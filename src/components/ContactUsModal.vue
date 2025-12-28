@@ -1,12 +1,27 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
+
+// Props
+interface Props {
+  title: string;
+  buttonText?: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  buttonText: "Contact Manager",
+});
+
+// Emits
+const emit = defineEmits<{
+  close: [];
+  submit: [data: { name: string; phone: string }];
+}>();
 
 // Состояние формы
 const name = ref<string>("");
 const phone = ref<string>("");
 
 // Пути к изображениям
-const storageImage = "/images/calculate/storage-1-2.png";
 const phoneIcon = "/images/calculate/phone.png";
 const emailIcon = "/images/calculate/email.png";
 const whatsappIcon = "/images/calculate/whatsapp.png";
@@ -27,8 +42,37 @@ const handlePhoneChange = (event: Event) => {
 // Обработчик отправки формы
 const handleSubmit = (event: Event) => {
   event.preventDefault();
-  console.log("Form submitted:", { name: name.value, phone: phone.value });
+  emit("submit", { name: name.value, phone: phone.value });
 };
+
+// Обработчик закрытия модалки
+const handleClose = () => {
+  emit("close");
+};
+
+// Обработчик клика на overlay
+const handleOverlayClick = (event: MouseEvent) => {
+  if (event.target === event.currentTarget) {
+    handleClose();
+  }
+};
+
+// Обработчик нажатия клавиши Escape
+const handleEscape = (event: KeyboardEvent) => {
+  if (event.key === "Escape") {
+    handleClose();
+  }
+};
+
+// Добавляем обработчик при монтировании компонента
+onMounted(() => {
+  document.addEventListener("keydown", handleEscape);
+});
+
+// Удаляем обработчик при размонтировании
+onUnmounted(() => {
+  document.removeEventListener("keydown", handleEscape);
+});
 
 // Кнопки контактов
 const contactButtons = [
@@ -70,27 +114,49 @@ const socialButtons = [
 </script>
 
 <template>
-  <section
-    class="relative w-full h-[990px] bg-white"
-    aria-label="Calculation of materials supply"
+  <!-- Overlay -->
+  <div
+    class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+    @click="handleOverlayClick"
   >
-    <!-- Фоновое изображение storage -->
-    <img
-      class="absolute top-0 left-0 w-full h-full object-cover"
-      alt="Storage"
-      :src="storageImage"
-    />
-
     <!-- Белая карточка с формой -->
     <div
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[928px] h-[670px] flex items-center justify-center bg-white rounded-[32px] overflow-y-scroll"
+      class="relative w-full max-w-[928px] h-[670px] flex items-center justify-center bg-white rounded-[32px] overflow-y-auto"
+      @click.stop
     >
       <div class="h-[510px] w-[608px] relative">
+        <!-- Кнопка закрытия -->
+        <button
+          @click="handleClose"
+          class="absolute cursor-pointer -top-15 -right-35 w-8 h-8 flex items-center justify-center text-2xl rounded-full bg-[#D9D9D9] text-black hover:text-gray-700 transition-colors z-10"
+          aria-label="Close modal"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g data-figma-bg-blur-radius="16">
+              <rect
+                width="24"
+                height="24"
+                rx="12"
+                fill="black"
+                fill-opacity="0.05"
+              />
+              <path d="M8 8L16 16" stroke="black" />
+              <path d="M16 8L8 16" stroke="black" />
+            </g>
+          </svg>
+        </button>
+
         <!-- Заголовок -->
         <h1
           class="absolute top-0 left-[calc(50.00%_-_368px)] w-[736px] [font-family:'Lora-Medium',Helvetica] font-medium text-black text-4xl text-center tracking-[0] leading-[50.4px]"
         >
-          Calculation of materials supply
+          {{ title }}
         </h1>
 
         <!-- Описательный текст -->
@@ -142,12 +208,12 @@ const socialButtons = [
           <button
             type="submit"
             class="flex w-[608px] items-center justify-center gap-2.5 p-4 absolute top-[189px] left-[calc(50.00%_-_304px)] rounded-2xl overflow-hidden bg-[linear-gradient(0deg,rgba(167,101,8,1)_0%,rgba(167,101,8,1)_100%)] cursor-pointer hover:opacity-90 transition-opacity"
-            aria-label="Calculate"
+            aria-label="Submit form"
           >
             <span
               class="relative w-fit mt-[-1.00px] [font-family:'Avenir_Next-Regular',Helvetica] font-normal text-white text-2xl text-center tracking-[0] leading-[33.6px] whitespace-nowrap"
             >
-              Calculate
+              {{ buttonText }}
             </span>
           </button>
         </form>
@@ -206,7 +272,9 @@ const socialButtons = [
           :aria-label="button.text"
         >
           <!-- Иконка -->
-          <div class="relative w-7 h-7 aspect-[1] flex items-center justify-center">
+          <div
+            class="relative w-7 h-7 aspect-[1] flex items-center justify-center"
+          >
             <img
               :src="button.icon"
               :alt="button.type"
@@ -243,7 +311,7 @@ const socialButtons = [
         </p>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <style scoped>
@@ -260,4 +328,3 @@ const socialButtons = [
   border-width: 0;
 }
 </style>
-

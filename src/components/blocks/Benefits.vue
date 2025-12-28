@@ -102,16 +102,20 @@ const benefitsData: Benefit[] = [
   },
 ];
 
+// Emits
+const emit = defineEmits<{
+  "open-contact-modal": [variant: "make-enquiry"];
+}>();
+
 // Обработчик клика на кнопку
 const handleEnquiryClick = () => {
-  // Здесь можно добавить логику для обработки запроса
-  console.log("Make an enquiry clicked");
+  emit("open-contact-modal", "make-enquiry");
 };
 </script>
 
 <template>
   <section
-    class="mx-auto w-[1440px] h-[1105px] flex flex-col bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,245,232,1)_100%),linear-gradient(0deg,rgba(255,245,232,1)_0%,rgba(255,245,232,1)_100%)]"
+    class="w-full h-[1105px] flex flex-col bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,245,232,1)_100%),linear-gradient(0deg,rgba(255,245,232,1)_0%,rgba(255,245,232,1)_100%)]"
   >
     <!-- Заголовок "Roadmap" -->
     <header
@@ -128,7 +132,7 @@ const handleEnquiryClick = () => {
     </h1>
 
     <!-- Контейнер с карточками benefits -->
-    <div class="ml-40 w-[1120px] h-[656px] relative mt-20">
+    <div class="mx-auto max-w-[1120px] w-[1120px] h-[656px] relative mt-20">
       <!-- Карточки benefits -->
       <article
         v-for="benefit in benefitsData"

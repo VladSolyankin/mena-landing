@@ -276,6 +276,20 @@ const handleThumbnailClick = (imageIndex: number) => {
 const isMainImage = (positionId: number): boolean => {
   return positionId === 3; // Главное изображение на позиции 3
 };
+
+// Города для полосы прокрутки
+const cities = [
+  "Istanbul",
+  "Dubai",
+  "London",
+  "Cairo",
+  "Alanta",
+  "Doha",
+  "Xiamen",
+  "Moscow",
+  "Riyadh",
+  "Tehran",
+];
 </script>
 
 <template>
@@ -407,6 +421,28 @@ const isMainImage = (positionId: number): boolean => {
       <!-- Логотипы партнеров -->
       <div class="flex justify-center">
         <PortfolioCompanies />
+      </div>
+    </div>
+
+    <!-- Полоса прокрутки с городами (на всю ширину экрана) -->
+    <div class="portfolio__city-line">
+      <div class="portfolio__city-list">
+        <!-- Дублируем список несколько раз для бесконечной прокрутки -->
+        <template v-for="copy in [1, 2, 3]" :key="`copy-${copy}`">
+          <template
+            v-for="(city, index) in cities"
+            :key="`city-${copy}-${index}`"
+          >
+            <p class="portfolio__city-item">{{ city }}</p>
+            <p
+              class="portfolio__city-separator"
+              v-if="index < cities.length - 1"
+            >
+              ⬩
+            </p>
+          </template>
+          <p class="portfolio__city-separator" v-if="copy < 3">⬩</p>
+        </template>
       </div>
     </div>
   </section>
@@ -584,6 +620,53 @@ const isMainImage = (positionId: number): boolean => {
     height: auto;
     object-fit: contain;
   }
+
+  &__city-line {
+    background: #a76508;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin-top: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+  }
+
+  &__city-list {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-family: "Avenir Next", sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.2;
+    color: rgba(255, 255, 255, 0.4);
+    white-space: nowrap;
+    animation: scroll-cities 30s linear infinite;
+    will-change: transform;
+  }
+
+  &__city-item {
+    position: relative;
+    flex-shrink: 0;
+    margin: 0;
+  }
+
+  &__city-separator {
+    position: relative;
+    flex-shrink: 0;
+    margin: 0;
+  }
+}
+
+@keyframes scroll-cities {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
 }
 
 // Адаптивность
@@ -673,6 +756,17 @@ const isMainImage = (positionId: number): boolean => {
     &__partners {
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
+    }
+
+    &__city-line {
+      margin-top: 40px;
+      min-height: 50px;
+    }
+
+    &__city-list {
+      font-size: 18px;
+      gap: 16px;
+      animation-duration: 20s;
     }
   }
 }

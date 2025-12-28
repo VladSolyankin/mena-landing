@@ -88,7 +88,7 @@ const benefitCards = [
 
 <template>
   <section class="production-sites">
-    <div class="production-sites__container">
+    <div class="production-sites__container overflow-visible">
       <!-- ============================================
            SITES CONTAINER - Карта мира и статистика
            ============================================ -->
@@ -124,13 +124,13 @@ const benefitCards = [
             <div class="map-card__stats">
               <div class="map-card__stat">
                 <p class="map-card__stat-value">7 500 m<sup>2</sup></p>
-                <p class="map-card__stat-label">
+                <p class="text-white text-base text-[24px] font-medium">
                   finished products<br />per month
                 </p>
               </div>
               <div class="map-card__stat">
                 <p class="map-card__stat-value">35+</p>
-                <p class="map-card__stat-label">
+                <p class="text-white text-base text-[24px] font-medium">
                   modern machines<br />on the line
                 </p>
               </div>
@@ -253,7 +253,7 @@ const benefitCards = [
         </div>
 
         <!-- Правая часть с этапами производства -->
-        <div class="full-cycle__card">
+        <div class="full-cycle__card bg-[#FFFFFF]! p-1 relative">
           <!-- Верхний блок с этапами -->
           <div class="production-steps">
             <!-- Фоновое изображение склада -->
@@ -270,30 +270,18 @@ const benefitCards = [
               <div class="production-steps__row production-steps__row--1">
                 <span
                   class="production-steps__step production-steps__step--dark"
+                  :style="{
+                    backgroundImage: `url('/images/production-sites/raw-materials-bg.jpg')`,
+                  }"
                 >
                   1.RAW MATERIALS
                 </span>
-                <span class="production-steps__arrow">
-                  <svg
-                    width="191"
-                    height="56"
-                    viewBox="0 0 191 56"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      width="191"
-                      height="56"
-                      rx="28"
-                      fill="white"
-                      fill-opacity="0.1"
-                    />
-                    <path
-                      d="M45.7929 40.2927C45.4024 40.6833 45.4024 41.3164 45.7929 41.707L52.1569 48.0709C52.5474 48.4614 53.1805 48.4614 53.5711 48.0709C53.9616 47.6804 53.9616 47.0472 53.5711 46.6567L47.9142 40.9999L53.5711 35.343C53.9616 34.9525 53.9616 34.3193 53.5711 33.9288C53.1805 33.5383 52.5474 33.5383 52.1569 33.9288L45.7929 40.2927ZM153.5 40.9999L153.5 39.9999L46.5 39.9999L46.5 40.9999L46.5 41.9999L153.5 41.9999L153.5 40.9999ZM23 14L23 15L153.5 15L153.5 14L153.5 13L23 13L23 14ZM153.5 14L153.5 15C160.404 15 166 20.5964 166 27.4999L167 27.4999L168 27.4999C168 19.4919 161.508 13 153.5 13L153.5 14ZM153.5 40.9999L153.5 41.9999C161.508 41.9999 168 35.508 168 27.4999L167 27.4999L166 27.4999C166 34.4034 160.404 39.9999 153.5 39.9999L153.5 40.9999Z"
-                      fill="white"
-                    />
-                  </svg>
-                </span>
+
+                <img
+                  src="/images/production-sites/arrow-1.png"
+                  alt="Raw Materials"
+                  class="w-full h-full max-w-[191px] max-h-[56px] object-contain"
+                />
               </div>
 
               <!-- Ряд 2: Logistic + Production -->
@@ -320,6 +308,7 @@ const benefitCards = [
                     />
                   </svg>
                 </span>
+
                 <span
                   class="production-steps__step production-steps__step--light"
                 >
@@ -343,81 +332,30 @@ const benefitCards = [
                 >
                   5.PACKING
                 </span>
-                <span
-                  class="production-steps__arrow production-steps__arrow--reverse"
-                >
-                  <svg
-                    width="81"
-                    height="56"
-                    viewBox="0 0 81 56"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      width="81"
-                      height="56"
-                      rx="28"
-                      fill="white"
-                      fill-opacity="0.1"
-                    />
-                    <path
-                      d="M29.2929 27.2929C28.9024 27.6834 28.9024 28.3166 29.2929 28.7071L35.6569 35.0711C36.0474 35.4616 36.6805 35.4616 37.0711 35.0711C37.4616 34.6805 37.4616 34.0474 37.0711 33.6569L31.4142 28L37.0711 22.3431C37.4616 21.9526 37.4616 21.3195 37.0711 20.9289C36.6805 20.5384 36.0474 20.5384 35.6569 20.9289L29.2929 27.2929ZM50 17L49 17L49 20L50 20L51 20L51 17L50 17ZM42 28L42 27L30 27L30 28L30 29L42 29L42 28ZM50 20L49 20C49 23.866 45.866 27 42 27L42 28L42 29C46.9706 29 51 24.9706 51 20L50 20Z"
-                      fill="white"
-                    />
-                  </svg>
-                </span>
+
+                <img
+                  src="/images/production-sites/arrow-2.png"
+                  alt="Logistic"
+                  class="w-full h-full max-w-[81px] max-h-[56px] object-contain"
+                />
               </div>
             </div>
-
-            <!-- Стрелка вниз -->
-            <div class="production-steps__down-arrow">
-              <svg
-                width="56"
-                height="120"
-                viewBox="0 0 56 120"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g clip-path="url(#clip_container)">
-                  <rect
-                    x="5.24537e-06"
-                    y="120"
-                    width="120"
-                    height="56"
-                    rx="28"
-                    transform="rotate(-90 5.24537e-06 120)"
-                    fill="white"
-                    fill-opacity="0.1"
-                  />
-                  <path
-                    d="M27.2929 100.707C27.6834 101.098 28.3166 101.098 28.7071 100.707L35.0711 94.3431C35.4616 93.9526 35.4616 93.3195 35.0711 92.9289C34.6806 92.5384 34.0474 92.5384 33.6569 92.9289L28 98.5858L22.3432 92.9289C21.9526 92.5384 21.3195 92.5384 20.9289 92.9289C20.5384 93.3195 20.5384 93.9526 20.9289 94.3431L27.2929 100.707ZM28 20L27 20L27 100L28 100L29 100L29 20L28 20Z"
-                    fill="white"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip_container">
-                    <rect
-                      x="5.24537e-06"
-                      y="120"
-                      width="120"
-                      height="56"
-                      rx="28"
-                      transform="rotate(-90 5.24537e-06 120)"
-                      fill="white"
-                    />
-                  </clipPath>
-                </defs>
-              </svg>
-            </div>
           </div>
+
+          <!-- Стрелка вниз -->
+          <img
+            src="/images/production-sites/arrow-3.png"
+            alt="Logistic"
+            class="absolute z-10 w-full h-full max-w-[56px] max-h-[120px] object-contain top-85 left-80"
+          />
 
           <!-- Нижний блок с результатом -->
           <div class="excellent-result">
             <div class="excellent-result__overlay">
               <svg
-                width="209"
+                width="210"
                 height="123"
-                viewBox="0 0 209 123"
+                viewBox="0 0 210 123"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -685,7 +623,7 @@ const benefitCards = [
       <!-- ============================================
            BOTTOM CARDS - Преимущества доставки
            ============================================ -->
-      <div class="benefits-row">
+      <div class="benefits-row mt-30">
         <!-- Any size -->
         <div class="benefit-card benefit-card--dark">
           <div class="benefit-card__icon">
@@ -860,7 +798,7 @@ $color-border: #ededed;
     position: absolute;
     left: 0;
     top: 0;
-    width: 300px;
+    width: 800px;
     height: 100%;
     background: linear-gradient(
       90deg,
@@ -902,6 +840,7 @@ $color-border: #ededed;
       color: white;
       margin: 0;
       white-space: pre-wrap;
+      text-indent: 0 !important;
     }
   }
 }
@@ -1457,7 +1396,7 @@ $color-border: #ededed;
   }
 
   &--light {
-    background: $color-light-bg;
+    background: rgba(240, 240, 240, 1);
 
     .benefit-card__icon {
       background: #e9e9ea;

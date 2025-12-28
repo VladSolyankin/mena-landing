@@ -34,10 +34,7 @@ const handleSubmit = (e: Event) => {
 </script>
 
 <template>
-  <footer
-    class="relative w-[1440px] h-[480px] bg-[#333333]"
-    aria-label="Footer"
-  >
+  <footer class="relative w-full h-[480px] bg-[#333333]" aria-label="Footer">
     <!-- Социальные ссылки (справа внизу) -->
     <div
       class="absolute top-96 left-[1194px] [font-family:'Avenir_Next-Regular',Helvetica] font-normal text-[#ffffff99] text-base tracking-[0] leading-4 whitespace-nowrap"
@@ -100,13 +97,6 @@ const handleSubmit = (e: Event) => {
         </svg>
       </button>
     </form>
-
-    <!-- Заголовок -->
-    <h2
-      class="absolute top-20 left-[calc(50.00%_+_112px)] w-[382px] h-28 flex items-center justify-center [font-family:'Lora-Regular',Helvetica] font-normal text-white text-[40px] tracking-[0] leading-[56.0px]"
-    >
-      Calculation of materials supply
-    </h2>
 
     <!-- Логотип -->
     <div class="absolute w-[182px] h-10 top-20 left-40">

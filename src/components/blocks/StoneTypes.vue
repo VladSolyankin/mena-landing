@@ -2,6 +2,16 @@
 import SampleBg from "../../assets/svg/products-grid/sample-bg.vue";
 import CtaPattern from "../../assets/svg/products-grid/cta-pattern.vue";
 
+// Emits
+const emit = defineEmits<{
+  "open-contact-modal": [variant: "request-catalog"];
+}>();
+
+// Обработчик клика на кнопку "Request catalog"
+const handleRequestCatalogClick = () => {
+  emit("open-contact-modal", "request-catalog");
+};
+
 /**
  * Карточка материала в сетке.
  * Размеры карточки: 268x296px, скругление 16px
@@ -445,7 +455,11 @@ const isCtaCard = (card: SectionCard): card is CatalogCtaCard =>
               <!-- Статистика -->
               <p class="cta-card__stats">{{ card.stats }}</p>
               <!-- Кнопка -->
-              <button class="cta-card__button" type="button">
+              <button
+                @click="handleRequestCatalogClick"
+                class="cta-card__button"
+                type="button"
+              >
                 {{ card.buttonLabel }}
               </button>
             </article>
@@ -480,7 +494,7 @@ const isCtaCard = (card: SectionCard): card is CatalogCtaCard =>
               <img src="/images/stone-types/BC 1.png" alt="Sample BC 1" />
             </div>
             <div class="sample-info__image sample-info__image--bc3">
-              <img src="/images/stone-types/BC 3.png" alt="Sample BC 3" />
+              <img src="/images/products-grid/BC 3.png" alt="Sample BC 3" />
             </div>
             <div class="sample-info__image sample-info__image--bc42">
               <img src="/images/stone-types/BC 4 2.png" alt="Sample BC 4 2" />
@@ -803,8 +817,8 @@ const isCtaCard = (card: SectionCard): card is CatalogCtaCard =>
     }
 
     &--bc3 {
-      left: 830px;
-      top: -192px;
+      left: 800px;
+      top: -232px;
       width: 324px;
       height: 324px;
       transform: rotate(180deg) scaleY(-1);

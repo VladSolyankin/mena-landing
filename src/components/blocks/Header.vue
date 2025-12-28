@@ -1,5 +1,15 @@
 <script setup lang="ts">
 import Logo from "../../assets/svg/logo.vue";
+
+// Emits
+const emit = defineEmits<{
+  "open-contact-modal": [variant: "get-in-touch"];
+}>();
+
+// Обработчик клика на кнопку "ORDER A CALL"
+const handleOrderCallClick = () => {
+  emit("open-contact-modal", "get-in-touch");
+};
 </script>
 
 <template>
@@ -59,6 +69,7 @@ import Logo from "../../assets/svg/logo.vue";
 
       <!-- Sample Button Container (справа) -->
       <button
+        @click="handleOrderCallClick"
         class="absolute w-[199px] h-[40px] left-[921px] top-px bg-[#EA9236] rounded-xl overflow-hidden text-nowrap"
         style="
           background: linear-gradient(

@@ -2,6 +2,16 @@
 import ProductsDetails from "../../assets/svg/products-grid/products-details.vue";
 import SampleBg from "../../assets/svg/products-grid/sample-bg.vue";
 
+// Emits
+const emit = defineEmits<{
+  "open-contact-modal": [variant: "free-samples"];
+}>();
+
+// Обработчик клика на кнопку "GET SAMPLE"
+const handleGetSampleClick = () => {
+  emit("open-contact-modal", "free-samples");
+};
+
 // Типы продуктов
 interface Product {
   id: string;
@@ -429,7 +439,9 @@ const gridRows: GridRow[] = [
           </div>
 
           <!-- Кнопка "Get sample" -->
-          <button class="sample-info__button">GET SAMPLE</button>
+          <button @click="handleGetSampleClick" class="sample-info__button">
+            GET SAMPLE
+          </button>
         </div>
       </template>
     </div>

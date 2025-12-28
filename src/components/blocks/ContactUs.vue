@@ -31,15 +31,10 @@ const handleSubmit = async (event: Event) => {
 
 <template>
   <section
-    class="relative top-0 left-0 w-[1440px] h-[720px] mx-auto"
+    class="relative top-0 left-0 w-full h-[720px] mx-auto contact-section"
+    :style="{ backgroundImage: `url(${backgroundImage})` }"
     aria-label="Contact Us Section"
   >
-    <!-- Фоновое изображение -->
-    <img
-      class="absolute w-[1440px] h-[560px] top-0 left-0 aspect-[2.91] object-cover"
-      alt="Background"
-      :src="backgroundImage"
-    />
 
     <!-- Белая карточка с формой -->
     <div
@@ -130,6 +125,12 @@ const handleSubmit = async (event: Event) => {
 </template>
 
 <style scoped>
+.contact-section {
+  background-repeat: repeat-x;
+  background-size: auto 560px;
+  background-position: top center;
+}
+
 /* Дополнительные стили, если необходимо */
 .sr-only {
   position: absolute;

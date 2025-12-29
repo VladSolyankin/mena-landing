@@ -1,6 +1,6 @@
 /**
  * Конфигурация хранилища для больших файлов (PDF, изображения и т.д.)
- * 
+ *
  * Для больших файлов рекомендуется использовать:
  * - AWS S3 + CloudFront
  * - Google Cloud Storage
@@ -11,18 +11,18 @@
 export interface StorageConfig {
   // Базовый URL для файлов (например: https://cdn.example.com или https://storage.googleapis.com/bucket-name)
   baseUrl: string;
-  
+
   // Путь к папке с документами (например: /documents или /pdfs)
   documentsPath: string;
-  
+
   // Использовать ли базовый URL (если false, файлы берутся из /public)
   useExternalStorage: boolean;
 }
 
 // Конфигурация по умолчанию (локальные файлы из /public)
 export const defaultStorageConfig: StorageConfig = {
-  baseUrl: "",
-  documentsPath: "/documents",
+  baseUrl: "https://storage.yandexcloud.net/",
+  documentsPath: "/vladsolyankinfiles",
   useExternalStorage: false,
 };
 
@@ -47,4 +47,3 @@ export function getDocumentUrl(filename: string): string {
   }
   return `${storageConfig.documentsPath}/${filename}`;
 }
-

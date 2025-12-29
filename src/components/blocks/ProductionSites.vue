@@ -945,7 +945,7 @@ $color-border: #ededed;
   &__text {
     position: absolute;
     left: 16px;
-    top: 16px;
+    top: 5px;
     font-family: "Lora", serif;
     font-weight: 500;
     font-size: 32px;

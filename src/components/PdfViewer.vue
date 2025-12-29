@@ -76,37 +76,6 @@ const handleDownload = () => {
         >.
       </p>
     </iframe>
-
-    <!-- Вариант 2: embed -->
-    <embed
-      v-else-if="viewerType === 'embed'"
-      :src="pdfUrl"
-      :width="width"
-      :height="height"
-      type="application/pdf"
-      class="pdf-viewer border border-gray-300 rounded-lg"
-      :title="title"
-      aria-label="PDF Viewer"
-    />
-
-    <!-- Вариант 3: object -->
-    <object
-      v-else-if="viewerType === 'object'"
-      :data="pdfUrl"
-      :width="width"
-      :height="height"
-      type="application/pdf"
-      class="pdf-viewer border border-gray-300 rounded-lg"
-      :title="title"
-      aria-label="PDF Viewer"
-    >
-      <p>
-        Your browser does not support PDFs.
-        <a :href="pdfUrl" target="_blank" rel="noopener noreferrer"
-          >Download the PDF</a
-        >.
-      </p>
-    </object>
   </div>
 </template>
 
@@ -129,4 +98,3 @@ const handleDownload = () => {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 </style>
-

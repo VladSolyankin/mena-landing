@@ -154,7 +154,7 @@ line-height: 140%; /* 56px */ -->
         :value="email"
         @input="handleEmailChange"
         placeholder="NAME@MAIL.COM"
-        class="mt-3.5 w-[141px] h-4 ml-4 [font-family:var(--font-montserrat)] font-normal text-[#ffffff80] text-base tracking-[0] leading-4 whitespace-nowrap placeholder:text-[#ffffff80] bg-transparent outline-none"
+        class="mt-3.5 w-[161px] h-4 ml-4 [font-family:var(--font-montserrat)] font-normal text-[#ffffff80] text-base tracking-[0] leading-4 whitespace-nowrap placeholder:text-[#ffffff80] bg-transparent outline-none"
         aria-label="Email address for materials supply calculation"
         :aria-invalid="!isEmailValid && email.length > 0"
       />

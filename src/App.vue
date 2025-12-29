@@ -15,9 +15,12 @@ import Footer from "./components/blocks/Footer.vue";
 import ContactUsModal from "./components/ContactUsModal.vue";
 import ThankYouModal from "./components/ThankYouModal.vue";
 import Presentations from "./components/Presentations.vue";
+import StoneInfo from "./components/blocks/StoneInfo.vue";
+import { getStoneData } from "./data/stones";
 
 // Управление страницами
-const currentPage = ref<"home" | "presentations">("home");
+const currentPage = ref<"home" | "presentations" | "stone-detail">("home");
+const currentStoneId = ref<string | null>(null);
 
 // Управление модалками
 type ModalType = "contact" | "thankyou" | null;
@@ -64,8 +67,16 @@ const modalTitles: Record<ContactModalVariant, string> = {
 const handleNavigateHome = () => {
   if (currentPage.value !== "home") {
     currentPage.value = "home";
+    currentStoneId.value = null;
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
+};
+
+// Обработчик открытия страницы камня
+const handleOpenStonePage = (stoneId: string) => {
+  currentStoneId.value = stoneId;
+  currentPage.value = "stone-detail";
+  window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
 // Обработка навигации по якорям
@@ -87,7 +98,8 @@ const handleNavigation = (event: Event) => {
       if (element) {
         const headerOffset = 149;
         const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        const offsetPosition =
+          elementPosition + window.pageYOffset - headerOffset;
 
         window.scrollTo({
           top: offsetPosition,
@@ -112,6 +124,13 @@ onMounted(() => {
   // Проверка hash в URL при загрузке
   if (window.location.hash === "#presentations") {
     currentPage.value = "presentations";
+  } else if (window.location.hash.startsWith("#stone-")) {
+    const stoneId = window.location.hash.replace("#stone-", "");
+    const stoneData = getStoneData(stoneId);
+    if (stoneData) {
+      currentStoneId.value = stoneId;
+      currentPage.value = "stone-detail";
+    }
   }
 });
 </script>
@@ -121,6 +140,14 @@ onMounted(() => {
     <!-- Страница презентаций -->
     <Presentations
       v-if="currentPage === 'presentations'"
+      @open-contact-modal="openContactModal"
+      @navigate-home="handleNavigateHome"
+    />
+
+    <!-- Страница информации о камне -->
+    <StoneInfo
+      v-else-if="currentPage === 'stone-detail' && currentStoneId"
+      :stone-data="getStoneData(currentStoneId)!"
       @open-contact-modal="openContactModal"
       @navigate-home="handleNavigateHome"
     />
@@ -145,7 +172,11 @@ onMounted(() => {
         />
       </div>
 
-      <StoneTypes id="stones" @open-contact-modal="openContactModal" />
+      <StoneTypes
+        id="stones"
+        @open-contact-modal="openContactModal"
+        @open-stone-page="handleOpenStonePage"
+      />
 
       <ProductionSites id="manufactory" />
 
@@ -179,10 +210,7 @@ onMounted(() => {
       @submit="handleFormSubmit"
     />
 
-    <ThankYouModal
-      v-if="activeModal === 'thankyou'"
-      @close="closeModal"
-    />
+    <ThankYouModal v-if="activeModal === 'thankyou'" @close="closeModal" />
   </div>
 </template>
 

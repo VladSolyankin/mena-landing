@@ -5,11 +5,27 @@ import CtaPattern from "../../assets/svg/products-grid/cta-pattern.vue";
 // Emits
 const emit = defineEmits<{
   "open-contact-modal": [variant: "request-catalog"];
+  "open-stone-page": [stoneId: string];
 }>();
 
 // Обработчик клика на кнопку "Request catalog"
 const handleRequestCatalogClick = () => {
   emit("open-contact-modal", "request-catalog");
+};
+
+// Маппинг ID камней из компонента в ID в данных
+const stoneIdMap: Record<string, string> = {
+  "bianco-carrara": "bianco-carrara",
+  // Добавьте другие камни по мере необходимости
+};
+
+// Обработчик клика на карточку продукта
+const handleProductCardClick = (card: ProductCard) => {
+  // Проверяем, есть ли маппинг для этого камня
+  const stoneId = stoneIdMap[card.id];
+  if (stoneId) {
+    emit("open-stone-page", stoneId);
+  }
 };
 
 /**
@@ -426,8 +442,9 @@ const isCtaCard = (card: SectionCard): card is CatalogCtaCard =>
             <!-- Карточка продукта -->
             <article
               v-if="isProductCard(card) && card.id !== 'statuario'"
-              class="product-card"
+              class="product-card cursor-pointer"
               :data-card-id="card.id"
+              @click="handleProductCardClick(card)"
             >
               <!-- Контейнер изображения -->
               <div class="product-card__image-container">

@@ -3,6 +3,7 @@ import { ref, computed } from "vue";
 import PdfViewer from "./PdfViewer.vue";
 import Header from "./blocks/Header.vue";
 import Footer from "./blocks/Footer.vue";
+import { getDocumentUrl } from "../config/storage";
 
 // Emits
 const emit = defineEmits<{
@@ -10,26 +11,35 @@ const emit = defineEmits<{
   "navigate-home": [];
 }>();
 
-// Список презентаций из папки /public/documents
+// Список презентаций
+// Для больших файлов используйте внешнее хранилище (CDN, S3 и т.д.)
+// и укажите полные URL или используйте функцию getDocumentUrl
 const presentations = ref([
   {
     id: "family",
     title: "ROCK Family of Companies",
-    src: "/documents/ROCK Family of Companies.pdf",
+    src: getDocumentUrl("ROCK Family of Companies.pdf"),
     description: "Overview of ROCK family of companies",
   },
   {
     id: "natural-stones",
     title: "ROCK Natural Stones",
-    src: "/documents/ROCK Natural Stones.pdf",
+    src: getDocumentUrl("ROCK Natural Stones.pdf"),
     description: "Natural stones catalog and information",
   },
   {
     id: "stone-products",
     title: "ROCK Stone Products",
-    src: "/documents/ROCK Stone Products.pdf",
+    src: getDocumentUrl("ROCK Stone Products.pdf"),
     description: "Stone products catalog",
   },
+  // Пример с внешним URL (раскомментируйте и добавьте свои файлы):
+  // {
+  //   id: "large-presentation",
+  //   title: "Large Presentation",
+  //   src: "https://your-cdn.com/documents/large-file.pdf",
+  //   description: "Large presentation file from CDN",
+  // },
 ]);
 
 // Выбранная презентация
@@ -215,4 +225,3 @@ const currentPresentation = computed(() => {
 <style scoped>
 /* Дополнительные стили при необходимости */
 </style>
-

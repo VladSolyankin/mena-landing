@@ -347,7 +347,7 @@ const cities = [
       </div>
 
       <!-- Описание объекта и навигация -->
-      <div class="portfolio__description-section">
+      <div class="portfolio__description-section max-w-[1120px] mx-auto">
         <!-- Счетчик -->
         <div class="flex flex-col gap-4">
           <div class="portfolio__counter">
@@ -365,7 +365,7 @@ const cities = [
         <!-- Навигационные стрелки -->
         <div class="portfolio__navigation">
           <button
-            class="portfolio__nav-button portfolio__nav-button--prev"
+            class="portfolio__nav-button portfolio__nav-button--prev cursor-pointer"
             @click="prevItem"
             aria-label="Previous item"
           >
@@ -393,7 +393,7 @@ const cities = [
             </svg>
           </button>
           <button
-            class="portfolio__nav-button portfolio__nav-button--next"
+            class="portfolio__nav-button portfolio__nav-button--next cursor-pointer"
             @click="nextItem"
             aria-label="Next item"
           >
@@ -454,6 +454,7 @@ const cities = [
   width: 100%;
   background: #f5f5f7;
   overflow: hidden;
+  padding-top: 133px;
 
   &__container {
     max-width: 1440px;
@@ -462,7 +463,7 @@ const cities = [
   }
 
   &__subtitle {
-    font-family: "Avenir Next", sans-serif;
+    font-family: var(--font-montserrat);
     font-weight: 400;
     font-size: 32px;
     line-height: 1.4;
@@ -552,7 +553,7 @@ const cities = [
   }
 
   &__description-name {
-    font-family: "Avenir Next", sans-serif;
+    font-family: var(--font-montserrat);
     font-weight: 500;
     font-size: 24px;
     line-height: 1.4;
@@ -561,7 +562,7 @@ const cities = [
   }
 
   &__description-text {
-    font-family: "Avenir Next", sans-serif;
+    font-family: var(--font-montserrat);
     font-weight: 400;
     font-size: 24px;
     line-height: 1.4;
@@ -626,7 +627,7 @@ const cities = [
     width: 100%;
     overflow: hidden;
     position: relative;
-    margin-top: 80px;
+    margin-top: 224px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -637,7 +638,7 @@ const cities = [
     display: flex;
     align-items: center;
     gap: 24px;
-    font-family: "Avenir Next", sans-serif;
+    font-family: var(--font-montserrat);
     font-weight: 500;
     font-size: 24px;
     line-height: 1.2;
@@ -726,10 +727,6 @@ const cities = [
   .portfolio {
     padding: 60px 0 80px;
 
-    &__container {
-      padding: 0 20px;
-    }
-
     &__subtitle {
       font-size: 24px;
     }
@@ -745,7 +742,6 @@ const cities = [
 
     &__description-section {
       flex-direction: column;
-      padding: 0 20px;
       gap: 20px;
     }
 

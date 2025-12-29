@@ -437,7 +437,9 @@ const isCtaCard = (card: SectionCard): card is CatalogCtaCard =>
                   class="product-card__image"
                 />
                 <!-- Название камня -->
-                <p class="product-card__title tracking-0!">{{ card.title }}</p>
+                <p class="product-card__title tracking-0! whitespace-nowrap">
+                  {{ card.title }}
+                </p>
               </div>
               <!-- Бейдж Best seller -->
               <span
@@ -457,7 +459,7 @@ const isCtaCard = (card: SectionCard): card is CatalogCtaCard =>
               <!-- Кнопка -->
               <button
                 @click="handleRequestCatalogClick"
-                class="cta-card__button"
+                class="cta-card__button cursor-pointer"
                 type="button"
               >
                 {{ card.buttonLabel }}
@@ -470,7 +472,7 @@ const isCtaCard = (card: SectionCard): card is CatalogCtaCard =>
         <button
           v-if="section.showLoadMore"
           type="button"
-          class="load-more-button"
+          class="load-more-button cursor-pointer"
         >
           Load more
         </button>
@@ -502,7 +504,7 @@ const isCtaCard = (card: SectionCard): card is CatalogCtaCard =>
           </div>
 
           <!-- Кнопка "Get sample" -->
-          <button class="sample-info__button">GET SAMPLE</button>
+          <button class="sample-info__button cursor-pointer">GET SAMPLE</button>
         </div>
       </div>
     </div>
@@ -543,7 +545,6 @@ const isCtaCard = (card: SectionCard): card is CatalogCtaCard =>
   &__container {
     max-width: 1120px;
     margin: 0 auto;
-    padding: 0 20px;
     display: flex;
     flex-direction: column;
     gap: 64px;
@@ -629,8 +630,8 @@ const isCtaCard = (card: SectionCard): card is CatalogCtaCard =>
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 200px;
-    height: 56px;
+    width: 230px;
+    height: 55px;
     display: flex;
     align-items: flex-end;
     padding: 0 0 8px 12px;
@@ -643,7 +644,7 @@ const isCtaCard = (card: SectionCard): card is CatalogCtaCard =>
     z-index: 3;
     background: white;
     clip-path: path(
-      "M0 59L0 0C0 8.83656 7.16344 16 40 16L168 16C176.837 16 184 23.1634 184 32L184 43C184 51.8365 191.163 59 200 59L0 59Z"
+      "M1.89755e-06 59L-2.57897e-06 1.0848e-05C-2.19271e-06 8.83657 7.16344 16 16 16L202.228 16C211.064 16 218.228 23.1634 218.228 32L218.228 43C218.228 51.8365 225.391 59 234.228 59L237 59L1.89755e-06 59Z"
     );
   }
 
@@ -768,7 +769,6 @@ const isCtaCard = (card: SectionCard): card is CatalogCtaCard =>
     line-height: 1.4;
     color: #000;
     margin: 0;
-    white-space: pre-wrap;
     z-index: 1;
   }
 
@@ -817,8 +817,8 @@ const isCtaCard = (card: SectionCard): card is CatalogCtaCard =>
     }
 
     &--bc3 {
-      left: 800px;
-      top: -232px;
+      left: 830px;
+      top: -192px;
       width: 324px;
       height: 324px;
       transform: rotate(180deg) scaleY(-1);

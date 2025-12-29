@@ -4,12 +4,17 @@ import SampleBg from "../../assets/svg/products-grid/sample-bg.vue";
 
 // Emits
 const emit = defineEmits<{
-  "open-contact-modal": [variant: "free-samples"];
+  "open-contact-modal": [variant: "free-samples" | "make-enquiry"];
 }>();
 
 // Обработчик клика на кнопку "GET SAMPLE"
 const handleGetSampleClick = () => {
   emit("open-contact-modal", "free-samples");
+};
+
+// Обработчик клика на кнопку "more details" у Paving Stones
+const handlePavingStonesDetailsClick = () => {
+  emit("open-contact-modal", "make-enquiry");
 };
 
 // Типы продуктов
@@ -57,7 +62,6 @@ const products: Product[] = [
       top: 40,
       width: 197,
       height: 307,
-      transform: "rotate",
     },
   },
   {
@@ -70,14 +74,14 @@ const products: Product[] = [
       {
         src: "/images/products-grid/Stone Textures-1.png",
         left: 281,
-        bottom: -1,
+        bottom: 30,
         width: 99,
         height: 215,
       },
       {
         src: "/images/products-grid/Stone Textures.png",
         left: 389,
-        bottom: 76,
+        bottom: 100,
         width: 99,
         height: 215,
       },
@@ -404,7 +408,16 @@ const gridRows: GridRow[] = [
 
             <!-- Кнопка "More details" -->
             <button
-              class="product-card__details-button"
+              v-if="product.id === 'paving-stones'"
+              class="product-card__details-button product-card__details-button--text cursor-pointer"
+              @click="handlePavingStonesDetailsClick"
+              aria-label="More details"
+            >
+              more details
+            </button>
+            <button
+              v-else
+              class="product-card__details-button cursor-pointer"
               aria-label="More details"
             >
               <ProductsDetails />
@@ -439,7 +452,7 @@ const gridRows: GridRow[] = [
           </div>
 
           <!-- Кнопка "Get sample" -->
-          <button @click="handleGetSampleClick" class="sample-info__button">
+          <button @click="handleGetSampleClick" class="sample-info__button cursor-pointer">
             GET SAMPLE
           </button>
         </div>
@@ -452,7 +465,7 @@ const gridRows: GridRow[] = [
 .products-grid {
   position: relative;
   width: 100%;
-  background: white;
+  background: rgba(255, 255, 255, 0.5);
   padding-bottom: 80px;
 
   &__header {
@@ -485,7 +498,6 @@ const gridRows: GridRow[] = [
     justify-content: center;
     max-width: 1120px;
     margin: 0 auto;
-    padding: 0 20px;
   }
 }
 
@@ -609,6 +621,33 @@ const gridRows: GridRow[] = [
     &:active {
       opacity: 0.6;
     }
+
+    &--text {
+      width: auto;
+      height: auto;
+      min-width: 136px;
+      padding: 12px 24px;
+      background: linear-gradient(90deg, #a76508 0%, #e88c0a 100%);
+      border-radius: 16px;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 1.1;
+      color: white;
+      text-transform: lowercase;
+      white-space: nowrap;
+      transition: background 0.2s, opacity 0.2s;
+
+      &:hover {
+        background: linear-gradient(90deg, #8d5506 0%, #d17a09 100%);
+        opacity: 1;
+      }
+
+      &:active {
+        background: linear-gradient(90deg, #6d4105 0%, #b86807 100%);
+        opacity: 1;
+      }
+    }
   }
 }
 
@@ -622,8 +661,9 @@ const gridRows: GridRow[] = [
 
   &__text {
     position: absolute;
-    left: 32px;
+    left: 0px;
     top: 28px;
+    left: 32px;
     width: 498px;
     font-family: "Lora", serif;
     font-weight: 400;
@@ -631,7 +671,6 @@ const gridRows: GridRow[] = [
     line-height: 1.4;
     color: #000;
     margin: 0;
-    white-space: pre-wrap;
     z-index: 1;
   }
 

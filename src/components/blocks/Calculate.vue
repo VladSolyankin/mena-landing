@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { vMaska } from "maska/vue";
 
 // Состояние формы
 const name = ref<string>("");
@@ -83,19 +84,19 @@ const socialButtons = [
 
     <!-- Белая карточка с формой -->
     <div
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[928px] h-[670px] flex items-center justify-center bg-white rounded-[32px] overflow-y-scroll"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[928px] h-[670px] flex items-center justify-center bg-white rounded-[32px]"
     >
       <div class="h-[510px] w-[608px] relative">
         <!-- Заголовок -->
         <h1
-          class="absolute top-0 left-[calc(50.00%_-_368px)] w-[736px] [font-family:'Lora-Medium',Helvetica] font-medium text-black text-4xl text-center tracking-[0] leading-[50.4px]"
+          class="absolute top-0 left-[calc(50.00%_-_368px)] w-[736px] font-['Lora'] font-medium text-black text-4xl text-center tracking-[0] leading-[50.4px]"
         >
           Calculation of materials supply
         </h1>
 
         <!-- Описательный текст -->
         <p
-          class="absolute top-[53px] left-[calc(50.00%_-_224px)] w-[448px] [font-family:'Avenir_Next-Regular',Helvetica] font-normal text-[#000000cc] text-sm text-center tracking-[0] leading-[16.8px]"
+          class="absolute top-[53px] left-[calc(50.00%_-_224px)] w-[448px] [font-family:var(--font-montserrat)] font-normal text-[#000000cc] text-sm text-center tracking-[0] leading-[16.8px]"
         >
           Send us your contact information, our specialists will contact you to
           clarify the specifics and details of delivery.
@@ -115,7 +116,7 @@ const socialButtons = [
               :value="name"
               @input="handleNameChange"
               placeholder="NAME"
-              class="absolute top-5 left-4 w-[calc(50%_-_32px)] [font-family:'Avenir_Next-Regular',Helvetica] font-normal text-black text-xl tracking-[0] leading-[28.0px] placeholder:text-[#33333333] outline-none bg-transparent"
+              class="absolute top-5 left-4 w-[calc(50%_-_32px)] [font-family:var(--font-montserrat)] font-normal text-black text-xl tracking-[0] leading-[28.0px] placeholder:text-[#33333333] outline-none bg-transparent"
               aria-label="Name"
             />
 
@@ -130,10 +131,11 @@ const socialButtons = [
             <input
               id="phone-input"
               type="tel"
-              :value="phone"
+              v-model="phone"
+              v-maska="'+7 (###) ###-##-##'"
               @input="handlePhoneChange"
               placeholder="PHONE NUMBER"
-              class="absolute top-5 right-4 w-[181px] [font-family:'Avenir_Next-Regular',Helvetica] font-normal text-black text-xl tracking-[0] leading-[28.0px] text-right placeholder:text-[#33333333] outline-none bg-transparent"
+              class="absolute top-[18px] right-[195px] translate-x-[100%] w-[181px] [font-family:var(--font-montserrat)] font-normal text-black text-xl tracking-[0] leading-[28.0px] text-left placeholder:text-[#33333333] placeholder:uppercase outline-none bg-transparent"
               aria-label="Phone Number"
             />
           </div>
@@ -145,7 +147,7 @@ const socialButtons = [
             aria-label="Calculate"
           >
             <span
-              class="relative w-fit mt-[-1.00px] [font-family:'Avenir_Next-Regular',Helvetica] font-normal text-white text-2xl text-center tracking-[0] leading-[33.6px] whitespace-nowrap"
+              class="relative w-fit mt-[-1.00px] [font-family:var(--font-montserrat)] font-normal text-white text-2xl text-center tracking-[0] leading-[33.6px] whitespace-nowrap"
             >
               Calculate
             </span>
@@ -154,7 +156,7 @@ const socialButtons = [
 
         <!-- Текст перед кнопками контактов -->
         <p
-          class="absolute top-[285px] left-[calc(50.00%_-_224px)] w-[448px] text-[#000000cc] text-sm text-center leading-[16.8px] [font-family:'Avenir_Next-Regular',Helvetica] font-normal tracking-[0]"
+          class="absolute top-[285px] left-[calc(50.00%_-_224px)] w-[448px] text-[#000000cc] text-sm text-center leading-[16.8px] [font-family:var(--font-montserrat)] font-normal tracking-[0]"
         >
           Or contact us in a way convenient for you
         </p>
@@ -183,7 +185,7 @@ const socialButtons = [
 
           <!-- Текст -->
           <span
-            class="relative w-fit mt-[-1.00px] [font-family:'Avenir_Next-Regular',Helvetica] font-normal text-black text-xl text-center tracking-[0] leading-[28.0px] whitespace-nowrap"
+            class="relative w-fit mt-[-1.00px] [font-family:var(--font-montserrat)] font-normal text-black text-xl text-center tracking-[0] leading-[28.0px] whitespace-nowrap"
           >
             {{ button.text }}
           </span>
@@ -206,7 +208,9 @@ const socialButtons = [
           :aria-label="button.text"
         >
           <!-- Иконка -->
-          <div class="relative w-7 h-7 aspect-[1] flex items-center justify-center">
+          <div
+            class="relative w-7 h-7 aspect-[1] flex items-center justify-center"
+          >
             <img
               :src="button.icon"
               :alt="button.type"
@@ -217,7 +221,7 @@ const socialButtons = [
 
           <!-- Текст -->
           <span
-            class="[font-family:'Avenir_Next-Regular',Helvetica] text-white relative w-fit mt-[-1.00px] font-normal text-xl text-center tracking-[0] leading-[28.0px] whitespace-nowrap"
+            class="[font-family:var(--font-montserrat)] text-white relative w-fit mt-[-1.00px] font-normal text-xl text-center tracking-[0] leading-[28.0px] whitespace-nowrap"
           >
             {{ button.text }}
           </span>
@@ -225,7 +229,7 @@ const socialButtons = [
 
         <!-- Текст с согласием -->
         <p
-          class="absolute top-[476px] left-[calc(50.00%_-_224px)] w-[448px] [font-family:'Avenir_Next-Regular',Helvetica] font-normal text-[#33333366] text-xs text-center tracking-[0] leading-[16.8px]"
+          class="absolute top-[476px] left-[calc(50.00%_-_224px)] w-[448px] [font-family:var(--font-montserrat)] font-normal text-[#33333366] text-xs text-center tracking-[0] leading-[16.8px]"
         >
           <span class="text-[#33333366]">
             *By clicking the button, you consent to the processing of personal
@@ -260,4 +264,3 @@ const socialButtons = [
   border-width: 0;
 }
 </style>
-

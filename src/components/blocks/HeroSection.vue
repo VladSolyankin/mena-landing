@@ -45,8 +45,9 @@ const stats = [
     <!-- Tagline текст -->
     <div class="hero-section__tagline">
       <p>
-        Production and supply of natural stone products to major construction
-        sites worldwide
+        Production and supply of
+        <span class="text-[#EA9236]">natural stone</span> products to major
+        construction sites <span class="text-[#EA9236]">worldwide</span>
       </p>
     </div>
 
@@ -106,6 +107,8 @@ const stats = [
     height: 100%;
     object-fit: cover;
     object-position: center;
+
+    filter: brightness(0.5);
   }
 
   &__stories {
@@ -185,13 +188,13 @@ const stats = [
     position: absolute;
     top: 0;
     left: calc(50% - 560px + 40px);
-    max-width: 434px;
+    width: 474px;
     z-index: 3;
 
     p {
       font-family: "Lora", serif;
       font-weight: 500;
-      font-size: 48px;
+      font-size: 40px;
       line-height: 1.2;
       color: white;
       margin: 0;
@@ -211,7 +214,7 @@ const stats = [
     // Высота: 580px - 440px - 5px = 135px
     height: 135px;
     background: rgba(0, 0, 0, 0.12);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(1px);
     // Скругление соответствует внутреннему углу выреза (32px минус часть gap)
     border-radius: 27px;
     // Левый верхний угол должен соответствовать скруглению выреза
@@ -219,6 +222,8 @@ const stats = [
     display: flex;
     z-index: 3;
     overflow: hidden;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   &__stat {
@@ -245,7 +250,6 @@ const stats = [
     font-weight: 500;
     font-size: 36px;
     color: white;
-    text-transform: uppercase;
     line-height: 1;
     margin-bottom: 6px;
   }

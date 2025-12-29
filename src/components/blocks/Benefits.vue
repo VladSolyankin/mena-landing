@@ -119,14 +119,14 @@ const handleEnquiryClick = () => {
   >
     <!-- Заголовок "Roadmap" -->
     <header
-      class="h-[45px] w-[576px] self-center mt-20 [font-family:'Avenir_Next-Regular',Helvetica] font-normal text-[#a76508] text-[32px] text-center tracking-[0] leading-[44.8px]"
+      class="h-[45px] w-[576px] self-center mt-20 [font-family:var(--font-montserrat)] font-normal text-[#a76508] text-[32px] text-center tracking-[0] leading-[44.8px]"
     >
       Roadmap
     </header>
 
     <!-- Основной заголовок -->
     <h1
-      class="h-[164px] w-[576px] self-center [font-family:'Lora-Medium',Helvetica] font-medium text-[#333333] text-[64px] text-center tracking-[0] leading-[normal]"
+      class="h-[164px] w-[576px] self-center font-['Lora'] font-medium text-[#333333] text-[64px] text-center tracking-[0] leading-[normal]"
     >
       Benefits of working with us
     </h1>
@@ -159,7 +159,7 @@ const handleEnquiryClick = () => {
             benefit.titleHeight || 'h-[29px]',
             benefit.id === 1 ? 'w-[187px]' : 'w-52',
             benefit.id === 5 || benefit.id === 8 ? 'mt-[13px]' : 'mt-3',
-            `[font-family:'Avenir_Next-Medium',Helvetica] font-medium text-black text-2xl tracking-[0] leading-[28.8px] whitespace-pre-line`,
+            `[font-family:var(--font-montserrat)] font-medium text-black text-2xl tracking-[0] leading-[28.8px] whitespace-pre-line`,
           ]"
         >
           {{ benefit.title }}
@@ -179,7 +179,7 @@ const handleEnquiryClick = () => {
               ? 'h-11'
               : 'h-[88px]',
             benefit.id === 5 ? 'mt-[7px]' : 'mt-2',
-            `[font-family:'Avenir_Next-Regular',Helvetica] font-normal text-black text-base tracking-[0] leading-[22.4px] whitespace-pre-line`,
+            `[font-family:var(--font-montserrat)] font-normal text-black text-base tracking-[0] leading-[22.4px] whitespace-pre-line`,
           ]"
         >
           {{ benefit.description }}
@@ -192,7 +192,7 @@ const handleEnquiryClick = () => {
         class="all-[unset] box-border absolute top-72 right-[284px] w-[552px] h-24 flex items-center justify-center rounded-[32px] overflow-hidden bg-[linear-gradient(0deg,rgba(167,101,8,1)_0%,rgba(167,101,8,1)_100%)] cursor-pointer hover:opacity-90 transition-opacity"
       >
         <span
-          class="-mt-px h-[35px] ml-px w-[243px] [font-family:'Avenir_Next-Regular',Helvetica] font-normal text-white text-[32px] text-center tracking-[0] leading-[35.2px] whitespace-nowrap"
+          class="-mt-px h-[35px] ml-px w-[243px] [font-family:var(--font-montserrat)] font-normal text-white text-[32px] text-center tracking-[0] leading-[35.2px] whitespace-nowrap"
         >
           Make an enquiry
         </span>

@@ -183,7 +183,7 @@ const getWhitespaceClass = (stepId: string): string => {
       <!-- Основной текст внизу -->
       <p
         class="absolute top-[603px] left-[calc(50%_-_319px)] w-[638px] font-medium text-transparent text-2xl text-center tracking-[0] leading-[33.6px]"
-        style="font-family: 'Avenir Next', Helvetica, sans-serif"
+        style="font-family: var(--font-montserrat)"
       >
         <span class="text-[#33333399]"> We maintain our prices thanks to </span>
         <span class="text-[#333333]"> large production</span>
@@ -231,8 +231,8 @@ const getWhitespaceClass = (stepId: string): string => {
               color: step.textColor,
               fontFamily:
                 step.id === 'rock-logistics'
-                  ? `'Avenir Next', Helvetica, sans-serif`
-                  : `'Avenir Next', Helvetica, sans-serif`,
+                  ? `var(--font-montserrat)`
+                  : `var(--font-montserrat)`,
             }"
           >
             {{ step.label }}
@@ -298,8 +298,8 @@ const getWhitespaceClass = (stepId: string): string => {
               color: step.textColor,
               fontFamily:
                 step.id === 'manufacturer' || step.id === 'you-traditional'
-                  ? `'Avenir Next', Helvetica, sans-serif`
-                  : `'Avenir Next', Helvetica, sans-serif`,
+                  ? `var(--font-montserrat)`
+                  : `var(--font-montserrat)`,
             }"
           >
             {{ step.label }}

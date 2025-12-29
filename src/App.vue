@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed, onMounted } from "vue";
 import Header from "./components/blocks/Header.vue";
 import HeroSection from "./components/blocks/HeroSection.vue";
 import ProductsGrid from "./components/blocks/ProductsGrid.vue";
@@ -14,6 +14,10 @@ import Calculate from "./components/blocks/Calculate.vue";
 import Footer from "./components/blocks/Footer.vue";
 import ContactUsModal from "./components/ContactUsModal.vue";
 import ThankYouModal from "./components/ThankYouModal.vue";
+import Presentations from "./components/Presentations.vue";
+
+// Управление страницами
+const currentPage = ref<"home" | "presentations">("home");
 
 // Управление модалками
 type ModalType = "contact" | "thankyou" | null;
@@ -55,43 +59,116 @@ const modalTitles: Record<ContactModalVariant, string> = {
   "request-catalog": "Request catalog",
   "make-enquiry": "Make an enquiry",
 };
+
+// Обработчик возврата на главную страницу
+const handleNavigateHome = () => {
+  if (currentPage.value !== "home") {
+    currentPage.value = "home";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+};
+
+// Обработка навигации по якорям
+const handleNavigation = (event: Event) => {
+  const target = event.target as HTMLAnchorElement;
+  const href = target.getAttribute("href");
+
+  if (href === "#presentations") {
+    event.preventDefault();
+    currentPage.value = "presentations";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } else if (href?.startsWith("#") && currentPage.value === "presentations") {
+    // Если мы на странице презентаций и кликнули на другую ссылку, возвращаемся на главную
+    event.preventDefault();
+    currentPage.value = "home";
+    // Прокручиваем к нужному разделу после небольшой задержки
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        const headerOffset = 149;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+    }, 100);
+  }
+};
+
+// Обработка при монтировании
+onMounted(() => {
+  // Обработка кликов по ссылкам навигации
+  document.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+    const link = target.closest("a[href]");
+    if (link) {
+      handleNavigation(e);
+    }
+  });
+
+  // Проверка hash в URL при загрузке
+  if (window.location.hash === "#presentations") {
+    currentPage.value = "presentations";
+  }
+});
 </script>
 
 <template>
   <div class="min-h-screen bg-white">
-    <!-- Центрированный контейнер для всего лендинга -->
-    <div class="max-w-[1440px] mx-auto w-full">
-      <Header @open-contact-modal="openContactModal" />
-    </div>
-    <!-- HeroSection на всю ширину экрана -->
-    <HeroSection />
-    <!-- Центрированный контейнер для остальных блоков лендинга -->
-    <div class="mx-auto w-full">
-      <ProductsGrid
-        class="pt-[80px]"
-        @open-contact-modal="openContactModal"
-      />
-    </div>
+    <!-- Страница презентаций -->
+    <Presentations
+      v-if="currentPage === 'presentations'"
+      @open-contact-modal="openContactModal"
+      @navigate-home="handleNavigateHome"
+    />
 
-    <StoneTypes @open-contact-modal="openContactModal" />
+    <!-- Главная страница -->
+    <template v-else>
+      <!-- Центрированный контейнер для всего лендинга -->
+      <div class="max-w-[1440px] mx-auto w-full">
+        <Header
+          @open-contact-modal="openContactModal"
+          @navigate-home="handleNavigateHome"
+        />
+      </div>
+      <!-- HeroSection на всю ширину экрана -->
+      <HeroSection />
+      <!-- Центрированный контейнер для остальных блоков лендинга -->
+      <div class="mx-auto w-full">
+        <ProductsGrid
+          id="products"
+          class="pt-[80px]"
+          @open-contact-modal="openContactModal"
+        />
+      </div>
 
-    <ProductionSites />
+      <StoneTypes id="stones" @open-contact-modal="openContactModal" />
 
-    <Portfolio />
+      <ProductionSites id="manufactory" />
 
-    <Roadmap />
+      <Portfolio id="projects" />
 
-    <ContactUs />
+      <Roadmap />
 
-    <Benefits @open-contact-modal="openContactModal" />
+      <ContactUs />
 
-    <Service />
+      <Benefits @open-contact-modal="openContactModal" />
 
-    <Calculate />
+      <Service />
 
-    <div class="w-full bg-[#333333]">
-      <Footer class="mx-auto w-full max-w-[1440px]" />
-    </div>
+      <Calculate />
+
+      <div class="w-full bg-[#333333]">
+        <Footer
+          id="contacts"
+          class="mx-auto w-full max-w-[1440px]"
+          @navigate-home="handleNavigateHome"
+        />
+      </div>
+    </template>
 
     <!-- Модальные окна -->
     <ContactUsModal

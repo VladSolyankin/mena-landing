@@ -56,16 +56,16 @@ const roadmapSteps: RoadmapStep[] = [
       {
         text: "You ",
         className:
-          "[font-family:'Avenir_Next-Regular',Helvetica] font-normal text-[#333333] text-xl tracking-[0] leading-[28.0px]",
+          "[font-family:var(--font-montserrat)] font-normal text-[#333333] text-xl tracking-[0] leading-[28.0px]",
       },
       {
         text: "place an order",
-        className: "[font-family:'Avenir_Next-Medium',Helvetica] font-medium",
+        className: "[font-family:var(--font-montserrat)] font-medium",
       },
       {
         text: " or send a specification",
         className:
-          "[font-family:'Avenir_Next-Regular',Helvetica] font-normal text-[#333333] text-xl tracking-[0] leading-[28.0px]",
+          "[font-family:var(--font-montserrat)] font-normal text-[#333333] text-xl tracking-[0] leading-[28.0px]",
       },
     ],
     image: "/images/roadmap/1.png",
@@ -84,7 +84,7 @@ const roadmapSteps: RoadmapStep[] = [
       },
       {
         text: "with the project manager",
-        className: "[font-family:'Avenir_Next-Regular',Helvetica]",
+        className: "[font-family:var(--font-montserrat)]",
       },
     ],
     image: "/images/roadmap/2.png",
@@ -103,7 +103,7 @@ const roadmapSteps: RoadmapStep[] = [
       },
       {
         text: "and issuance\nof a commercial proposal",
-        className: "[font-family:'Avenir_Next-Regular',Helvetica]",
+        className: "[font-family:var(--font-montserrat)]",
       },
     ],
     image: "/images/roadmap/3.png",
@@ -122,7 +122,7 @@ const roadmapSteps: RoadmapStep[] = [
       },
       {
         text: "and contract conclusion",
-        className: "[font-family:'Avenir_Next-Regular',Helvetica]",
+        className: "[font-family:var(--font-montserrat)]",
       },
     ],
     image: "/images/roadmap/4.png",
@@ -138,16 +138,16 @@ const roadmapSteps: RoadmapStep[] = [
       {
         text: "Order ",
         className:
-          "[font-family:'Avenir_Next-Regular',Helvetica] font-normal text-[#333333] text-xl tracking-[0] leading-[28.0px]",
+          "[font-family:var(--font-montserrat)] font-normal text-[#333333] text-xl tracking-[0] leading-[28.0px]",
       },
       {
         text: "production, packaging\n",
-        className: "[font-family:'Avenir_Next-Medium',Helvetica] font-medium",
+        className: "[font-family:var(--font-montserrat)] font-medium",
       },
       {
         text: "and loading",
         className:
-          "[font-family:'Avenir_Next-Regular',Helvetica] font-normal text-[#333333] text-xl tracking-[0] leading-[28.0px]",
+          "[font-family:var(--font-montserrat)] font-normal text-[#333333] text-xl tracking-[0] leading-[28.0px]",
       },
     ],
     image: "/images/roadmap/5.png",
@@ -166,7 +166,7 @@ const roadmapSteps: RoadmapStep[] = [
       },
       {
         text: " of products\nto your site",
-        className: "[font-family:'Avenir_Next-Regular',Helvetica]",
+        className: "[font-family:var(--font-montserrat)]",
       },
     ],
     image: "/images/roadmap/6.png",
@@ -183,7 +183,7 @@ const roadmapSteps: RoadmapStep[] = [
     <!-- Заголовок "Roadmap" -->
     <header class="absolute top-20 left-[calc(50.00%_-_288px)] w-[576px]">
       <p
-        class="[font-family:'Avenir_Next-Regular',Helvetica] font-normal text-[#a76508] text-[32px] text-center tracking-[0] leading-[44.8px]"
+        class="[font-family:var(--font-montserrat)] font-normal text-[#a76508] text-[32px] text-center tracking-[0] leading-[44.8px]"
       >
         Roadmap
       </p>
@@ -222,7 +222,7 @@ const roadmapSteps: RoadmapStep[] = [
         <!-- Заголовок шага -->
         <p
           :id="`roadmap-step-${step.number}`"
-          class="[font-family:'Avenir_Next-Medium',Helvetica] absolute top-[159px] left-0 w-40 font-normal text-[#333333] text-xl tracking-[0] leading-[28.0px] whitespace-pre-line"
+          class="[font-family:var(--font-montserrat)] absolute top-[159px] left-0 w-40 font-normal text-[#333333] text-xl tracking-[0] leading-[28.0px] whitespace-pre-line"
         >
           <template v-if="step.titleSegments">
             <template

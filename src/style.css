@@ -18,9 +18,12 @@
   font-display: swap;
 }
 
+/* Lora - Google Font */
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap");
+
 /* Font definitions */
 :root {
-  /* Lora - Google Font (loaded via index.html) */
+  /* Lora - Google Font */
   --font-lora: "Lora", Georgia, "Times New Roman", serif;
 
   /* Montserrat - local font */
@@ -33,4 +36,9 @@ body {
   font-family: var(--font-montserrat);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Плавный скролл для всей страницы */
+html {
+  scroll-behavior: smooth;
 }

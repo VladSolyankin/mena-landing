@@ -123,13 +123,13 @@ const socialButtons = [
         <div class="flex flex-col gap-[3px] items-center justify-center">
           <!-- Текст "Thank you!" -->
           <h1
-            class="w-full mx-auto [font-family:'Lora-Medium',Helvetica] font-medium text-black text-4xl text-center tracking-[0] leading-[50.4px]"
+            class="w-full mx-auto font-['Lora'] font-medium text-black text-4xl text-center tracking-[0] leading-[50.4px]"
           >
             Thank you!
           </h1>
           <!-- Текст описания -->
           <p
-            class="w-[448px] mx-auto [font-family:'Avenir_Next-Regular',Helvetica] font-normal text-[#000000cc] text-sm text-center tracking-[0] leading-[16.8px]"
+            class="w-[448px] mx-auto [font-family:var(--font-montserrat)] font-normal text-[#000000cc] text-sm text-center tracking-[0] leading-[16.8px]"
           >
             The request has been sent. A specialist will contact you soon.
           </p>
@@ -148,7 +148,7 @@ const socialButtons = [
 
         <!-- Текст перед кнопками контактов -->
         <p
-          class="mx-auto mt-[45px] w-[448px] text-[#000000cc] text-sm text-center leading-[16.8px] [font-family:'Avenir_Next-Regular',Helvetica] font-normal tracking-[0]"
+          class="mx-auto mt-[45px] w-[448px] text-[#000000cc] text-sm text-center leading-[16.8px] [font-family:var(--font-montserrat)] font-normal tracking-[0]"
         >
           Or contact us in a way convenient for you
         </p>
@@ -177,7 +177,7 @@ const socialButtons = [
 
           <!-- Текст -->
           <span
-            class="relative w-fit mt-[-1.00px] [font-family:'Avenir_Next-Regular',Helvetica] font-normal text-black text-xl text-center tracking-[0] leading-[28.0px] whitespace-nowrap"
+            class="relative w-fit mt-[-1.00px] [font-family:var(--font-montserrat)] font-normal text-black text-xl text-center tracking-[0] leading-[28.0px] whitespace-nowrap"
           >
             {{ button.text }}
           </span>
@@ -213,7 +213,7 @@ const socialButtons = [
 
           <!-- Текст -->
           <span
-            class="[font-family:'Avenir_Next-Regular',Helvetica] text-white relative w-fit mt-[-1.00px] font-normal text-xl text-center tracking-[0] leading-[28.0px] whitespace-nowrap"
+            class="[font-family:var(--font-montserrat)] text-white relative w-fit mt-[-1.00px] font-normal text-xl text-center tracking-[0] leading-[28.0px] whitespace-nowrap"
           >
             {{ button.text }}
           </span>

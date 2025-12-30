@@ -16,11 +16,15 @@ import ContactUsModal from "./components/ContactUsModal.vue";
 import ThankYouModal from "./components/ThankYouModal.vue";
 import Presentations from "./components/Presentations.vue";
 import StoneInfo from "./components/blocks/StoneInfo.vue";
-import { getStoneData } from "./data/stones";
+import StoneTypeInfo from "./components/blocks/StoneTypeInfo.vue";
+import { getStoneData, getStoneTypeData } from "./data/stones";
 
 // Управление страницами
-const currentPage = ref<"home" | "presentations" | "stone-detail">("home");
+const currentPage = ref<
+  "home" | "presentations" | "stone-detail" | "stone-type-detail"
+>("home");
 const currentStoneId = ref<string | null>(null);
+const currentStoneTypeId = ref<string | null>(null);
 
 // Управление модалками
 type ModalType = "contact" | "thankyou" | null;
@@ -68,6 +72,7 @@ const handleNavigateHome = () => {
   if (currentPage.value !== "home") {
     currentPage.value = "home";
     currentStoneId.value = null;
+    currentStoneTypeId.value = null;
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 };
@@ -76,6 +81,13 @@ const handleNavigateHome = () => {
 const handleOpenStonePage = (stoneId: string) => {
   currentStoneId.value = stoneId;
   currentPage.value = "stone-detail";
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+// Обработчик открытия страницы типа продукта
+const handleOpenStoneTypePage = (stoneTypeId: string) => {
+  currentStoneTypeId.value = stoneTypeId;
+  currentPage.value = "stone-type-detail";
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
@@ -131,6 +143,13 @@ onMounted(() => {
       currentStoneId.value = stoneId;
       currentPage.value = "stone-detail";
     }
+  } else if (window.location.hash.startsWith("#stone-type-")) {
+    const stoneTypeId = window.location.hash.replace("#stone-type-", "");
+    const stoneTypeData = getStoneTypeData(stoneTypeId);
+    if (stoneTypeData) {
+      currentStoneTypeId.value = stoneTypeId;
+      currentPage.value = "stone-type-detail";
+    }
   }
 });
 </script>
@@ -152,6 +171,14 @@ onMounted(() => {
       @navigate-home="handleNavigateHome"
     />
 
+    <!-- Страница информации о типе продукта -->
+    <StoneTypeInfo
+      v-else-if="currentPage === 'stone-type-detail' && currentStoneTypeId"
+      :stone-type-data="getStoneTypeData(currentStoneTypeId)!"
+      @open-contact-modal="openContactModal"
+      @navigate-home="handleNavigateHome"
+    />
+
     <!-- Главная страница -->
     <template v-else>
       <!-- Центрированный контейнер для всего лендинга -->
@@ -169,6 +196,7 @@ onMounted(() => {
           id="products"
           class="pt-[80px]"
           @open-contact-modal="openContactModal"
+          @open-stone-type-page="handleOpenStoneTypePage"
         />
       </div>
 

@@ -5,6 +5,7 @@ import SampleBg from "../../assets/svg/products-grid/sample-bg.vue";
 // Emits
 const emit = defineEmits<{
   "open-contact-modal": [variant: "free-samples" | "make-enquiry"];
+  "open-stone-type-page": [stoneTypeId: string];
 }>();
 
 // Обработчик клика на кнопку "GET SAMPLE"
@@ -15,6 +16,20 @@ const handleGetSampleClick = () => {
 // Обработчик клика на кнопку "more details" у Paving Stones
 const handlePavingStonesDetailsClick = () => {
   emit("open-contact-modal", "make-enquiry");
+};
+
+// Обработчик клика на кнопку "More details" (три точки)
+const handleMoreDetailsClick = (productId: string) => {
+  // Маппинг ID продуктов на ID типов продуктов
+  const productToStoneTypeMap: Record<string, string> = {
+    "tactile-tiles": "tactile-tiles",
+    // Добавьте другие продукты по мере необходимости
+  };
+
+  const stoneTypeId = productToStoneTypeMap[productId];
+  if (stoneTypeId) {
+    emit("open-stone-type-page", stoneTypeId);
+  }
 };
 
 // Типы продуктов
@@ -331,7 +346,9 @@ const gridRows: GridRow[] = [
                 :key="index"
               >
                 <p class="product-card__feature-item">
-                  <span class="product-card__feature-text">{{ feature }}</span>
+                  <span class="product-card__feature-text text-nowrap">{{
+                    feature
+                  }}</span>
                 </p>
               </template>
             </div>
@@ -419,6 +436,7 @@ const gridRows: GridRow[] = [
               v-else
               class="product-card__details-button cursor-pointer"
               aria-label="More details"
+              @click="handleMoreDetailsClick(product.id)"
             >
               <ProductsDetails />
             </button>
@@ -452,7 +470,10 @@ const gridRows: GridRow[] = [
           </div>
 
           <!-- Кнопка "Get sample" -->
-          <button @click="handleGetSampleClick" class="sample-info__button cursor-pointer">
+          <button
+            @click="handleGetSampleClick"
+            class="sample-info__button cursor-pointer"
+          >
             GET SAMPLE
           </button>
         </div>

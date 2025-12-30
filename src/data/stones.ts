@@ -153,3 +153,139 @@ export const getStoneData = (id: string): StoneData | undefined => {
 export const getAllStoneIds = (): string[] => {
   return Object.keys(stonesData);
 };
+
+/**
+ * Типы данных для StoneTypeInfo
+ */
+
+export interface StoneTypeImage {
+  src: string;
+  alt: string;
+}
+
+export interface StoneTypeCharacteristics {
+  dimensions: {
+    min: number;
+    max: number;
+    unit: string; // "см"
+  };
+  grain: {
+    min: number;
+    max: number;
+    unit: string; // "MPa"
+  };
+  strength: string[]; // ["fine", "coarse"]
+  shape: StoneTypeImage[]; // Несколько изображений
+}
+
+export interface StoneTypePattern {
+  name: string;
+  image: string;
+}
+
+export interface StoneTypeData {
+  id: string;
+  title: string;
+  mainImage: string; // Главное изображение
+  mainImageOverlay?: string; // Наложение на главное изображение (опционально)
+  smallImages: StoneTypeImage[]; // 2 маленьких изображения
+  smallImageOverlay?: string; // Наложение на первое маленькое изображение (опционально)
+  description: string;
+  tags: string[]; // Теги под главным изображением
+  optionsCount: {
+    number: number;
+    text: string; // Например, "granite options"
+  };
+  characteristics: StoneTypeCharacteristics;
+  patterns: StoneTypePattern[];
+  dimensionsBar?: string; // Изображение для шкалы dimensions
+  strengthBar?: string; // Изображение для шкалы strength
+  grainBar?: string; // Изображение для шкалы grain
+}
+
+/**
+ * Данные для типов продуктов (Tactile tiles, Slabs, etc.)
+ */
+export const stoneTypesData: Record<string, StoneTypeData> = {
+  "tactile-tiles": {
+    id: "tactile-tiles",
+    title: "Tactile tiles",
+    mainImage: "/images/stone-info/types/tactile-tiles/main-image.png",
+    smallImages: [
+      {
+        src: "/images/stone-info/types/tactile-tiles/small-image-1.png",
+        alt: "Tactile tiles product page",
+      },
+      {
+        src: "/images/stone-info/types/tactile-tiles/stone-image-2.png",
+        alt: "Tactile tiles product",
+      },
+    ],
+    description:
+      "These slabs have become an indispensable attribute of modern cities, providing an opportunity for people with visual disabilities to navigate independently in public spaces.",
+    tags: ["Granite"],
+    optionsCount: {
+      number: 31,
+      text: "granite options",
+    },
+    characteristics: {
+      dimensions: {
+        min: 1,
+        max: 300,
+        unit: "cm",
+      },
+      grain: {
+        min: 60,
+        max: 120,
+        unit: "MPa",
+      },
+      strength: ["fine", "medium", "coarse"],
+      shape: [
+        {
+          src: "/images/stone-info/types/tactile-tiles/shape-1.svg",
+          alt: "Shape 1",
+        },
+        {
+          src: "/images/stone-info/types/tactile-tiles/shape-2.svg",
+          alt: "Shape 2",
+        },
+        {
+          src: "/images/stone-info/types/tactile-tiles/shape-3.svg",
+          alt: "Shape 3",
+        },
+        {
+          src: "/images/stone-info/types/tactile-tiles/shaper-4.svg",
+          alt: "Shape 4",
+        },
+      ],
+    },
+    patterns: [
+      {
+        name: "diagonal pattern",
+        image: "/images/stone-info/types/tactile-tiles/pattern-1.png",
+      },
+      {
+        name: "square pattern",
+        image: "/images/stone-info/types/tactile-tiles/pattern-2.png",
+      },
+      {
+        name: "cone pattern",
+        image: "/images/stone-info/types/tactile-tiles/pattern-3.png",
+      },
+      {
+        name: "line pattern",
+        image: "/images/stone-info/types/tactile-tiles/pattern-4.png",
+      },
+    ],
+    dimensionsBar: "/images/stone-info/types/tactile-tiles/dimensions-bar.png",
+    strengthBar: "/images/stone-info/types/tactile-tiles/strength-bar.png",
+    grainBar: "/images/stone-info/types/tactile-tiles/grain-bar.png",
+  },
+};
+
+/**
+ * Получить данные о типе продукта по ID
+ */
+export const getStoneTypeData = (id: string): StoneTypeData | undefined => {
+  return stoneTypesData[id];
+};
